@@ -1,0 +1,23 @@
+{
+  "name": "demo_socket_io_3",
+  "version": "1.0.0",
+  "description": "Démonstration de message Broadcast",
+  "main": "sockets3.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "ejs": "^2.5.5",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "INFO2",
+    "SOCKET",
+    "BROADCAST"
+  ],
+  "author": "E. Céret",
+  "license": "ISC"
+}
