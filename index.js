@@ -18,7 +18,10 @@ server.
 	.use(function(req, res, next){
 		res.setHeader('Content-Type', 'text/plain; charset=utf-8');
 		res.status(404).send('Vous êtes sur une page inconnue.');
-	}) ;
+	})
+	.engine('html', require('ejs').renderFile)
+	.set('view engine','html') ;
+	
 
 // Chargement de socket.io
 var io = sockets.listen(server.listen(8080));
