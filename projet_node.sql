@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 20 mars 2019 à 10:20
+-- Généré le :  jeu. 21 mars 2019 à 10:27
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -98,6 +98,15 @@ CREATE TABLE IF NOT EXISTS `sondage` (
   `libelle_sondage` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_sondage`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `sondage`
+--
+
+INSERT INTO `sondage` (`id_sondage`, `libelle_sondage`) VALUES
+(1, 'Les chaussettes sales'),
+(2, 'Guillaume VS Geoffrey'),
+(3, 'Le surpoid de Guillaume');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

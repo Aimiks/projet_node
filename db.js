@@ -1,19 +1,22 @@
 mysql = require('mysql') ;
-connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : '',
-    database : 'projet_node'
-});
-connection.connect( function(err) {
-    if (err) {
-        console.log("Connexion à la base impossible.");
-    } else {
-        console.log("Connexion à la base réussie.");
-    }
-});
+var connection;
 
-function connexion(login, password)
+exports.init = function() {
+    connection = mysql.createConnection({
+        host : 'localhost',
+        user : 'root',
+        password : '',
+        database : 'projet_node'
+    });
+    connection.connect( function(err) {
+        if (err) {
+            console.log("Connexion à la base impossible.");
+        } else {
+            console.log("Connexion à la base réussie.");
+        }
+    });
+}
+exports.connexion = function(login, password)
 {
     var requete =   'SELECT `login`, `password` ' +
                     'FROM `administrateur` ' +
@@ -36,3 +39,24 @@ function connexion(login, password)
         }
     });
 }
+exports.getLesSondages = function() {
+    return new Promise(function(resolve, reject){
+        var requete =   'SELECT `id_sondage`, `libelle_sondage` ' +
+            'FROM `sondage`;';
+
+        connection.query(requete, function(err, rows, fields) {
+            if (err) {
+                res.write('Impossible de lire les comptes analytiques.');
+            } else {
+                //console.log("ok db sondage");
+                /*for (var i=0; i < rows.length; i++) {
+                     console.log(rows[i].id_sondage +
+                                 rows[i].libelle_sondage) ;
+                 }*/
+                //console.log(rows);
+                resolve(rows);
+            }
+        })
+    });
+}
+

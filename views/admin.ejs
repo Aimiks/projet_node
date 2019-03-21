@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Connexion</title>
+    </head>
+    <body>
+        <input type="text" value="" id="login" name="login" placeholder="login"/>
+        <input type="password" value="" id="password" name="password" placeholder="password"/>
+        <input type="submit" value="connexion"/>
+        <% for(var i = 0 ; i < result.length ; i++) { %>
+            <li><a href="/sondage/<%= result[i].id_sondage %>/admin"><%= result[i].libelle_sondage %></a></li>
+        <% } %>
+    </body>
+</html>

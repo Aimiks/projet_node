@@ -1,8 +1,11 @@
 ﻿var express = require('express');
 var fs = require('fs') ;
 var sockets = require('socket.io');
-
+var db = require('./db.js');
 var server = express() ;
+
+db.init();
+
 server.
 	// Page d'accueil
 	get('/', function(req, res) {
@@ -10,6 +13,18 @@ server.
 		res.render('index');
 	})
 
+	.get('/admin', function(req, res) {
+        res.setHeader('Content-Type', "text/html; charset=utf-8");
+        db.getLesSondages().then((result)=>{
+            console.log(result);
+            res.render('admin', {result});
+		});
+    })
+
+    .get('/etudiant', function(req, res) {
+        res.setHeader('Content-Type', "text/html; charset=utf-8");
+        res.render('etudiant');
+    })
 	.use(express.static(__dirname + '/css'))
 	.use(express.static(__dirname + '/img'))
 	.use(express.static(__dirname + '/lib/jQuery'))
@@ -19,8 +34,8 @@ server.
 		res.setHeader('Content-Type', 'text/plain; charset=utf-8');
 		res.status(404).send('Vous êtes sur une page inconnue.');
 	})
-	.engine('html', require('ejs').renderFile)
-	.set('view engine','html') ;
+	//.engine('html', require('ejs').renderFile)
+	.set('view engine','ejs') ;
 	
 
 // Chargement de socket.io
