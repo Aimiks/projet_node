@@ -40,10 +40,10 @@ server.
 
 // Chargement de socket.io
 var io = sockets.listen(server.listen(8080));
+io.on('connection', function(client) {
+    console.log('Client connected...');
 
-// Puis on traite les demandes en provenance du navigateur de l'utilisateur
-io.sockets.on('connection', function (request) {
-	console.log('Un utilisateur s\'est connecté avec la session  #' + request.id);
-	// Info à tous les utilisateurs connectés, sauf à celui qui se connecte (à tester avec 2 navigateurs !)
-	request.broadcast.emit('info', {text: 'Un utilisateur s\'est connecté'});
+    client.on('join', function(data) {
+        console.log(data);
+	});
 });
