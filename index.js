@@ -14,11 +14,27 @@ server.
 	})
 
 	.get('/admin', function(req, res) {
+		res.setHeader('Content-Type', "text/html; charset=utf-8");
+		res.render('admin');
+	})
+
+	.get('/sondages/admin', function(req, res) {
         res.setHeader('Content-Type', "text/html; charset=utf-8");
         db.getLesSondages().then((result)=>{
             console.log(result);
             res.render('admin', {result});
 		});
+    })
+
+    .get('/sondages/creation', function(req, res) {
+        res.setHeader('Content-Type', "text/html; charset=utf-8");
+		res.render('creation');
+    })
+
+    .get('/sondages/creation/nouveau', function(req, res) {
+        res.setHeader('Content-Type', "text/html; charset=utf-8");
+        db.insertNewSondage();
+		res.render('creation');
     })
 
     .get('/etudiant', function(req, res) {

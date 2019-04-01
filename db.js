@@ -59,4 +59,23 @@ exports.getLesSondages = function() {
         })
     });
 }
+exports.insertNewSondage = function(titre, questions) {
+    return new Promise(function(resolve, reject){
+        var requete =   'SELECT `id_sondage`, `libelle_sondage` ' +
+            'FROM `sondage`;';
 
+        connection.query(requete, function(err, rows, fields) {
+            if (err) {
+                res.write('Impossible de lire les comptes analytiques.');
+            } else {
+                //console.log("ok db sondage");
+                /*for (var i=0; i < rows.length; i++) {
+                     console.log(rows[i].id_sondage +
+                                 rows[i].libelle_sondage) ;
+                 }*/
+                //console.log(rows);
+                resolve(rows);
+            }
+        })
+    });
+}
