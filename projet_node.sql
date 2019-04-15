@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 21 mars 2019 à 10:27
+-- Généré le :  lun. 15 avr. 2019 à 09:29
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -57,6 +57,28 @@ CREATE TABLE IF NOT EXISTS `appartient` (
   PRIMARY KEY (`id_question`,`id_reponse`),
   KEY `FK_reponseId` (`id_reponse`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignant`
+--
+
+DROP TABLE IF EXISTS `enseignant`;
+CREATE TABLE IF NOT EXISTS `enseignant` (
+  `id_enseignant` int(10) NOT NULL,
+  `nom_enseignant` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_enseignant`),
+  UNIQUE KEY `UniqueKeyNomEnseignant` (`nom_enseignant`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `enseignant`
+--
+
+INSERT INTO `enseignant` (`id_enseignant`, `nom_enseignant`) VALUES
+(1, 'Guillaume'),
+(2, 'Geoffrey');
 
 -- --------------------------------------------------------
 
