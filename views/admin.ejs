@@ -5,16 +5,13 @@
         <title>Connexion</title>
     </head>
     <body>
-        <input type="text" value="" id="login" name="login" placeholder="login"/>
-        <input type="password" value="" id="password" name="password" placeholder="password"/>
-        <input type="submit" value="connexion"/>
         <% if (typeof(lesSondages) !== "undefined") { %>
             <h1>Choisissez un sondage : </h1>
-            <% for(var i = 0 ; i < result.length ; i++) { %>
-                <li><a href="/sondage/<%= lesSondages[i].id_sondage %>/admin"><%= lesSondages[i].libelle_sondage %></a></li>
+            <% for(var i = 0 ; i < lesSondages.length ; i++) { %>
+                <li><a href="/sondages/<%= lesSondages[i].id_sondage %>/admin"><%= lesSondages[i].libelle_sondage %></a></li>
             <% } %>
         <% } else if (typeof(leSondage) !== "undefined") { %>
-
+            <p>En attente des participants</p>
         <% } else { %>
             <form method="get" action="/sondages/admin">
                 <button type="submit" id="sondage">voir les songades</button>

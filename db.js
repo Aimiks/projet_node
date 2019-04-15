@@ -49,12 +49,6 @@ exports.getLesSondages = function() {
                 res.write('Impossible de lire les comptes analytiques.');
                 reject(new SQLError());
             } else {
-                //console.log("ok db sondage");
-                /*for (var i=0; i < rows.length; i++) {
-                     console.log(rows[i].id_sondage +
-                                 rows[i].libelle_sondage) ;
-                 }*/
-                //console.log(rows);
                 resolve(rows);
             }
         })
@@ -86,12 +80,6 @@ exports.insertNewSondage = function(titre, questions) {
                 res.write('Impossible de lire les comptes analytiques.');
                 reject(new SQLError());
             } else {
-                //console.log("ok db sondage");
-                /*for (var i=0; i < rows.length; i++) {
-                     console.log(rows[i].id_sondage +
-                                 rows[i].libelle_sondage) ;
-                 }*/
-                //console.log(rows);
                 resolve(rows);
             }
         })
@@ -107,12 +95,6 @@ exports.getLesEnseignant = function() {
                 res.write('Impossible de lire les comptes analytiques.');
                 reject(new SQLError());
             } else {
-                //console.log("ok db sondage");
-                for (var i=0; i < rows.length; i++) {
-                     console.log(rows[i].id_enseignant +
-                                 rows[i].nom_enseignant) ;
-                 }
-                console.log(rows);
                 resolve(rows);
             }
         })
