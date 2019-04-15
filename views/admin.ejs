@@ -8,12 +8,14 @@
         <input type="text" value="" id="login" name="login" placeholder="login"/>
         <input type="password" value="" id="password" name="password" placeholder="password"/>
         <input type="submit" value="connexion"/>
-        <% if (typeof(result) !== "undefined") { %>
+        <% if (typeof(lesSondages) !== "undefined") { %>
             <h1>Choisissez un sondage : </h1>
             <% for(var i = 0 ; i < result.length ; i++) { %>
-                <li><a href="/sondage/<%= result[i].id_sondage %>/admin"><%= result[i].libelle_sondage %></a></li>
+                <li><a href="/sondage/<%= lesSondages[i].id_sondage %>/admin"><%= lesSondages[i].libelle_sondage %></a></li>
             <% } %>
-        <% }else { %>
+        <% } else if (typeof(leSondage) !== "undefined") { %>
+
+        <% } else { %>
             <form method="get" action="/sondages/admin">
                 <button type="submit" id="sondage">voir les songades</button>
             </form>

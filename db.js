@@ -47,6 +47,7 @@ exports.getLesSondages = function() {
         connection.query(requete, function(err, rows, fields) {
             if (err) {
                 res.write('Impossible de lire les comptes analytiques.');
+                reject(new SQLError());
             } else {
                 //console.log("ok db sondage");
                 /*for (var i=0; i < rows.length; i++) {
@@ -54,6 +55,22 @@ exports.getLesSondages = function() {
                                  rows[i].libelle_sondage) ;
                  }*/
                 //console.log(rows);
+                resolve(rows);
+            }
+        })
+    });
+}
+exports.getSondage = function(id_sondage) {
+    return new Promise(function(resolve, reject){
+        var requete =   'SELECT `id_sondage`, `libelle_sondage` ' +
+            'FROM `sondage`' +
+            'WHERE id_sondage = ' + id_sondage + ';';
+
+        connection.query(requete, function(err, rows, fields) {
+            if (err) {
+                res.write('Impossible de lire les comptes analytiques.');
+                reject(new SQLError());
+            } else {
                 resolve(rows);
             }
         })
@@ -67,6 +84,7 @@ exports.insertNewSondage = function(titre, questions) {
         connection.query(requete, function(err, rows, fields) {
             if (err) {
                 res.write('Impossible de lire les comptes analytiques.');
+                reject(new SQLError());
             } else {
                 //console.log("ok db sondage");
                 /*for (var i=0; i < rows.length; i++) {
@@ -74,6 +92,27 @@ exports.insertNewSondage = function(titre, questions) {
                                  rows[i].libelle_sondage) ;
                  }*/
                 //console.log(rows);
+                resolve(rows);
+            }
+        })
+    });
+}
+exports.getLesEnseignant = function() {
+    return new Promise(function(resolve, reject){
+        var requete =   'SELECT `id_enseignant`, `nom_enseignant` ' +
+                        'FROM `enseignant`;';
+
+        connection.query(requete, function(err, rows, fields) {
+            if (err) {
+                res.write('Impossible de lire les comptes analytiques.');
+                reject(new SQLError());
+            } else {
+                //console.log("ok db sondage");
+                for (var i=0; i < rows.length; i++) {
+                     console.log(rows[i].id_enseignant +
+                                 rows[i].nom_enseignant) ;
+                 }
+                console.log(rows);
                 resolve(rows);
             }
         })

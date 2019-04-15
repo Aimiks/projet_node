@@ -20,10 +20,18 @@ server.
 
 	.get('/sondages/admin', function(req, res) {
         res.setHeader('Content-Type', "text/html; charset=utf-8");
-        db.getLesSondages().then((result)=>{
-            console.log(result);
-            res.render('admin', {result});
+        db.getLesSondages().then((lesSondages)=>{
+            console.log(lesSondages);
+            res.render('admin', {lesSondages});
 		});
+    })
+
+    .get('/sondages/:id/admin', function(req, res) {
+        res.setHeader('Content-Type', "text/html; charset=utf-8");
+        db.getSondage(req.params.id).then((leSondage)=>{
+            console.log(leSondage);
+            res.render('admin', {leSondage});
+        });
     })
 
     .get('/sondages/creation', function(req, res) {
@@ -40,6 +48,14 @@ server.
     .get('/etudiant', function(req, res) {
         res.setHeader('Content-Type', "text/html; charset=utf-8");
         res.render('etudiant');
+    })
+
+    .get('/enseignant/etudiant', function(req, res) {
+        res.setHeader('Content-Type', "text/html; charset=utf-8");
+        db.getLesEnseignant().then((lesEnseignants)=>{
+            console.log(lesEnseignants);
+            res.render('etudiant', {lesEnseignants});
+        }).catch(error => console.error(error));
     })
 	.use(express.static(__dirname + '/css'))
 	.use(express.static(__dirname + '/img'))
