@@ -5,6 +5,16 @@
     <title>Etudiant</title>
 </head>
 <body>
-
+    <% if (typeof(lesEnseignants) !== "undefined") { %>
+        <h3>Choisissez l'enseignant responsable du sondage : </h3>
+        <% for(var i = 0 ; i < lesEnseignants.length ; i++) { %>
+            <li><a href="/enseignant/<%= lesEnseignants[i].id_enseignant %>/etudiant"><%= lesEnseignants[i].nom_enseignant %></a></li>
+        <% } %>
+    <% }else { %>
+        <form method="get" action="/etudiant">
+            <input type="text" id="nomEtudiant" value="" placeholder="Entrez votre nom"/>
+            <button type="submit" id="sondage">Valider</button>
+        </form>
+    <% } %>
 </body>
 </html>
