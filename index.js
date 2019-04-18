@@ -30,7 +30,8 @@ server.
         res.setHeader('Content-Type', "text/html; charset=utf-8");
         db.getSondage(req.params.id).then((leSondage)=>{
             console.log(leSondage);
-            res.render('admin', {leSondage});
+            var idSondage = req.params.id;
+            res.render('admin', {leSondage, idSondage});
         });
     })
 
@@ -55,6 +56,14 @@ server.
         db.getLesEnseignant().then((lesEnseignants)=>{
             console.log(lesEnseignants);
             res.render('etudiant', {lesEnseignants});
+        }).catch(error => console.error(error));
+    })
+    .get('/:id/videopro/:idquestion', function(req, res) {
+        res.setHeader('Content-Type', "text/html; charset=utf-8");
+        db.getQuestion(req.params.id).then((lesQuestions)=>{
+            console.log(lesQuestions);
+            var idQuestion = req.params.idquestion;
+            res.render('videopro', {lesQuestions, idQuestion});
         }).catch(error => console.error(error));
     })
 	.use(express.static(__dirname + '/css'))

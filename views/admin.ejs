@@ -12,6 +12,7 @@
             <% } %>
         <% } else if (typeof(leSondage) !== "undefined") { %>
             <p>En attente des participants</p>
+            <a target="_blank" href="/<%= idSondage %>/videopro/0">Lancer sondage</a>
         <% } else { %>
             <form method="get" action="/sondages/admin">
                 <button type="submit" id="sondage">voir les songades</button>

@@ -100,3 +100,19 @@ exports.getLesEnseignant = function() {
         })
     });
 }
+exports.getQuestion = function(id_sondage) {
+    return new Promise(function(resolve, reject){
+        var requete =   'SELECT `id_question`, `libelle_question` ' +
+            'FROM `question` ' +
+            'WHERE id_sondage = ' + id_sondage + ';';
+
+        connection.query(requete, function(err, rows, fields) {
+            if (err) {
+                res.write('Impossible de lire les comptes analytiques.');
+                reject(new SQLError());
+            } else {
+                resolve(rows);
+            }
+        })
+    });
+};
