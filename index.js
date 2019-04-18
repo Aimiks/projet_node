@@ -61,6 +61,7 @@ server.
 	.use(express.static(__dirname + '/img'))
 	.use(express.static(__dirname + '/lib/jQuery'))
 	.use(express.static(__dirname + '/views'))
+    .use("/helpers", express.static(__dirname + '/helpers' ))
 
 	.use(function(req, res, next){
 		res.setHeader('Content-Type', 'text/plain; charset=utf-8');

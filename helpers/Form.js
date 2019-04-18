@@ -57,7 +57,7 @@ function AjoutQuestion(){
 
 //Fonction d'ajout de groupe
 function AjoutRep(Id) {
-    if ()
+    //if ()
 
     //On crée un élément de type p
     var newDiv = document.createElement('div');

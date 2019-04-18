@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Nouveau sondage</title>
+    <script src="/helpers/Form.js"></script>
 </head>
     <body>
 
@@ -11,7 +12,7 @@
             <p><input placeholder="Nom du sondage" class="w3-input w3-border" type="text" id="nom" name="nom" autocomplete="off" required /></p>
         </div>
         <div id="squellette">
-            <button id="AjoutQuestion" class="w3-button w3-dark-grey" type="button" onclick="AjoutQuestion()">Ajout Question</button>
+            <button id="AjoutQuestion" class="w3-button w3-dark-grey" type="button" onclick="AjoutQuestion()"> Ajout Question </button>
             <hr>
             <button id="envoie" class="w3-button w3-dark-grey" type="button" value="Submit" onclick="insertSondage()">Creer le sondage</button>
         </div>
