@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sondages</title>
+</head>
+<body>
+    <h2>Liste des sondages ouvert</h2>
+    <% for(var i = 0 ; i < sondages.length ; i++) { %>
+        <li><a href="/sondages/<%= sondages[i].id_sondage %>"><%= sondages[i].libelle_sondage %></a></li>
+    <% } %>
+</body>
+</html>

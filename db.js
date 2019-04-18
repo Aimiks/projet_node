@@ -5,8 +5,8 @@ exports.init = function() {
     connection = mysql.createConnection({
         host : 'localhost',
         user : 'root',
-        password : '',
-        database : 'projet_node'
+        password : 'root',
+        database : 'node'
     });
     connection.connect( function(err) {
         if (err) {

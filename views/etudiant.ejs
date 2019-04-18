@@ -11,10 +11,18 @@
             <li><a href="/enseignant/<%= lesEnseignants[i].id_enseignant %>/etudiant"><%= lesEnseignants[i].nom_enseignant %></a></li>
         <% } %>
     <% }else { %>
-        <form method="get" action="/etudiant">
-            <input type="text" id="nomEtudiant" value="" placeholder="Entrez votre nom"/>
-            <button type="submit" id="sondage">Valider</button>
+        <form method="get" action="/sondages/liste" onsubmit="emitData()">
+            <input id="name" type="text" id="nomEtudiant" value="" placeholder="Entrez votre nom"/>
+            <input type="submit" id="sondage" value="Valider">
         </form>
     <% } %>
 </body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/jquery/jquery.js"></script>
+<script>
+    var socket = io.connect('http://localhost:8080');
+    function emitData() {
+        socket.emit('setUserData', {name: $('#name').val()});
+    }
+</script>
 </html>

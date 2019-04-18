@@ -11,14 +11,24 @@
                 <li><a href="/sondages/<%= lesSondages[i].id_sondage %>/admin"><%= lesSondages[i].libelle_sondage %></a></li>
             <% } %>
         <% } else if (typeof(leSondage) !== "undefined") { %>
-            <p>En attente des participants</p>
+            <p>En attente des participants..</p>
+            <div id="connectedClients"></div>
+            <button>Lancer</button>
         <% } else { %>
             <form method="get" action="/sondages/admin">
-                <button type="submit" id="sondage">voir les songades</button>
+                <button type="submit" id="sondage">voir les sondages</button>
             </form>
             <form method="get" action="/sondages/creation">
                 <button type="submit" id="creer">Nouveau sondage</button>
             </form>
         <% } %>
     </body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/jquery/jquery.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:8080');
+        socket.on('new_client', function(data) {
+            $("#connectedClients").append(`<p>${data.user ? data.user.name : ''}(${data.id})</p>`);
+        });
+    </script>
 </html>
